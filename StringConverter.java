@@ -1,4 +1,6 @@
 // Luke Ellis String Converter
+import java.util.ArrayList;
+
 public class StringConverter
 {
 
@@ -44,12 +46,83 @@ public class StringConverter
 
     public static String pigLatinate(String str)
     {
-        return "Test";
+        char fl = str.charAt(0);
+        boolean capFirst = Character.isUpperCase(fl);
+        fl = Character.toLowerCase(fl);
+        if (str.indexOf("a") == -1 && str.indexOf("e") == -1 & str.indexOf("i") == -1 & str.indexOf("o") == -1 && str.indexOf("u") == -1)
+        {
+            return str + "ay";
+        }
+        else if (fl == 'a' || fl == 'i' || fl == 'o' || fl == 'e' || fl == 'u')
+        {
+            return str + "yay";
+        }
+        else
+        {
+            String start = "";
+            String end = "";
+
+            int index = 0;
+            int len = str.length();
+            char cont = '!';
+            // Find index of first vowell
+            for (int i = 0; i < len; i++)
+            {
+                cont = str.charAt(i);
+                if (cont == 'a' || cont == 'i' || cont == 'o' || cont == 'e' || cont == 'u')
+                {
+                    index = i;
+                    break;
+                }
+            }
+            start = str.substring(0, index);
+            end = str.substring(index);
+            if (capFirst)
+            {
+                end = end.substring(0, 1).toUpperCase() + end.substring(1);
+            }
+            return end + start.toLowerCase() + "ay";
+        }
     }
 
     public static String shorthand(String str)
     {
-        return "Test2";
+        ArrayList<Integer> indicies = new ArrayList<Integer>();
+        indicies.add(0);
+        String result = "";
+        String word = "";
+        for (int i = 0; i < str.length(); i++)
+        {
+            if (str.charAt(i) == ' ')
+            {
+                indicies.add(i + 1);
+            }
+        }
+        for (int j = 0; j < indicies.size(); j++)
+        {
+            word = str.substring(indicies.get(j), indicies.get(j + 1));
+            if (word.substring(0,3).equals("and"))
+            {
+                result += "&" + word.substring(3);
+            }
+            else if (word.substring(0,2).equals("to"))
+            {
+                result += "2" + word.substring(2);
+            }
+            else if (word.substring(0, 3).equals("you"))
+            {
+                result += "U" + word.substring(3);
+            }
+            else if (word.substring(0,3).equals("for"))
+            {
+                result += "4" + word.substring(3);
+            }
+            else
+            {
+                result = "Not done yet";
+            }
+        }
+        return word;
     }
 
 }

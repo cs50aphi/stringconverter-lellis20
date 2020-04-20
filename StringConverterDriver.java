@@ -17,7 +17,7 @@ public class StringConverterDriver
         System.out.println(str);
         System.out.println(newstr);
         System.out.println("-----------------------------");
-    
+
         // Palindrome
         String[] checks = new String[5];
         checks[0] = "radar";
@@ -25,21 +25,21 @@ public class StringConverterDriver
         checks[2] = "Eva: Can I see bees in a cave?";
         checks[3] = "Java is Java";
         checks[4] = "Are we not drawn onward, we few, drawn onward to new era?";
-        
+
         for (String s : checks) {
         System.out.println("\"" + s + "\" is a palindrome: " + StringConverter.checkPalindrome(s));
         }
         System.out.println("-----------------------------");
-        
+
         // Pig Latin
         // Only processes one word at a time
         str = "You need our new atomic refrigerator!";
         System.out.println(str);
         System.out.println(breakUp(str)); // passes str to breakUp, which in turn calls pigLatinate (see below)
         System.out.println("-----------------------------");
-        
+
         // Shorthand
-        
+
         String[] shorts = new String[3];
         shorts[0] = "For you and me to be best friends, we must be all to each other.";
         shorts[1] = "You are not as funny as you think you are.";
@@ -51,7 +51,7 @@ public class StringConverterDriver
         }
         System.out.println("-----------------------------");
     }
-     
+
     /**
     * Recursive function that takes a sentence and breaks it into individual words,
     * passing each word on to a StringConverter method. Then it reconstructs the sentence
@@ -68,7 +68,7 @@ public class StringConverterDriver
             }
             return StringConverter.pigLatinate(str);
         }
-        
+
         //if multiple words, pull out first word, send rest through the recursive loop
         String topig = "";
         String punc = " ";
