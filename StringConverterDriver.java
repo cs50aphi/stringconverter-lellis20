@@ -33,7 +33,7 @@ public class StringConverterDriver
 
         // Pig Latin
         // Only processes one word at a time
-        str = "You need our new atomic refrigerator!";
+        str = "You need our new atomic refrigerator";
         System.out.println(str);
         System.out.println(breakUp(str)); // passes str to breakUp, which in turn calls pigLatinate (see below)
         System.out.println("-----------------------------");
