@@ -98,31 +98,41 @@ public class StringConverter
                 indicies.add(i + 1);
             }
         }
-        for (int j = 0; j < indicies.size(); j++)
+        indicies.add(str.length());
+        for (int j = 0; j < indicies.size() - 1; j++)
         {
             word = str.substring(indicies.get(j), indicies.get(j + 1));
-            if (word.substring(0,3).equals("and"))
+            word = word.toLowerCase();
+            if (word.equals("and "))
             {
-                result += "&" + word.substring(3);
+                result += "& ";
             }
-            else if (word.substring(0,2).equals("to"))
+            else if (word.equals("to "))
             {
-                result += "2" + word.substring(2);
+                result += "2 ";
             }
-            else if (word.substring(0, 3).equals("you"))
+            else if (word.equals("you "))
             {
-                result += "U" + word.substring(3);
+                result += "U ";
             }
-            else if (word.substring(0,3).equals("for"))
+            else if (word.equals("for "))
             {
-                result += "4" + word.substring(3);
+                result += "4 ";
             }
             else
             {
-                result = "Not done yet";
+                for (int i = 0; i < word.length(); i++)
+                {
+                    // char subj = word.charAt(i);
+                    char subj = word.charAt(i);
+                    if (subj != 'a' && subj != 'i' && subj != 'o' && subj != 'e' && subj != 'u')
+                    {
+                        result += subj;
+                    }
+                }
             }
         }
-        return word;
+        return Character.toUpperCase(result.charAt(0)) + result.substring(1);
     }
 
 }
